@@ -7,7 +7,7 @@ struct Expense
     string category;
     double amount;
 };
-void addExpense(std::vector<Expense> &expenses)
+void addExpense(vector<Expense> &expenses)
 {
     Expense expense;
     cout << "Enter expense category: ";
@@ -16,7 +16,7 @@ void addExpense(std::vector<Expense> &expenses)
     cin >> expense.amount;
     expenses.push_back(expense);
 }
-void displayExpenses(const std::vector<Expense> &expenses)
+void displayExpenses(const vector<Expense> &expenses)
 {
     cout << "Expense List:\n";
     for (const auto &expense : expenses)
