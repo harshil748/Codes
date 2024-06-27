@@ -14,10 +14,17 @@ void printPairsDivisibleByK(const vector<int> &arr, int k)
     {
         int remainder = num % k;
         int complement = (k - remainder) % k;
-        if (freq[complement] > 0)
+
+        if (remainder == 0 && freq[remainder] > 1)
         {
+            cout << "(" << num << ", " << num << ")" << endl;
+            freq[remainder] -= 2;
+        }
+        else if (remainder != 0 && freq[remainder] > 0 && freq[complement] > 0)
+        {
+            cout << "(" << num << ", " << k - remainder << ")" << endl;
+            freq[remainder]--;
             freq[complement]--;
-            cout << "(" << num << ", " << complement << ")" << endl;
         }
     }
 }
