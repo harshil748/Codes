@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class MobileNumberParser {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner number = new Scanner(System.in);
         System.out.print("Enter a mobile number: ");
-        String mobileNumber = scanner.nextLine();
+        String mobileNumber = number.nextLine();
         parseMobileNumber(mobileNumber);
-        scanner.close();
     }
 
     public static void parseMobileNumber(String mobileNumber) {
