@@ -1,8 +1,13 @@
+import java.util.Scanner;
+
 public class MobileNumberParser {
 
     public static void main(String[] args) {
-        String mobileNumber = "+91-9499965789";
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a mobile number: ");
+        String mobileNumber = scanner.nextLine();
         parseMobileNumber(mobileNumber);
+        scanner.close();
     }
 
     public static void parseMobileNumber(String mobileNumber) {
