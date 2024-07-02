@@ -4,6 +4,7 @@ public class MobileNumberParser {
 
     public static void main(String[] args) {
         Scanner number = new Scanner(System.in);
+        number.close();
         System.out.print("Enter a mobile number: ");
         String mobileNumber = number.nextLine();
         parseMobileNumber(mobileNumber);
