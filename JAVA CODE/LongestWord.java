@@ -6,8 +6,8 @@ public class LongestWord {
         System.out.print("Enter a sentence: ");
         String sentence = line.nextLine();
         String[] words = sentence.split(" ");
-        String longestWord = "";
         int maxLength = 0;
+        String longestWord = ""; 
         for (String word : words) {
             if (word.length() > maxLength) {
                 maxLength = word.length();
@@ -15,5 +15,6 @@ public class LongestWord {
             }
         }
         System.out.println("Longest word's length = " + maxLength);
+        line.close();
     }
 }
