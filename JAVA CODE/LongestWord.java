@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class LongestWord {
     public static void main(String[] args) {
         Scanner line = new Scanner(System.in);
+        line.close();
         System.out.print("Enter a sentence: ");
         String sentence = line.nextLine();
         String[] words = sentence.split(" ");
