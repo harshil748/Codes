@@ -1,3 +1,4 @@
+/*
 import java.util.Scanner;
 
 public class LongestWord {
@@ -18,3 +19,4 @@ public class LongestWord {
         line.close();
     }
 }
+    */
