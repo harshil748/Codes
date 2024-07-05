@@ -3,24 +3,27 @@ import java.util.Scanner;
 public class DecimalToAnynum {
     public static void main(String[] args) {
         Scanner num = new Scanner(System.in);
-        int decimal;
         System.out.print("Enter the number: ");
-        decimal = num.nextInt();
-        System.out.print("Enter the base: ");
-        int base = num.nextInt();
-        System.out.println("Enter the base to convert: ");
-        int base2 = num.nextInt();
-        num.close();
-        String deci = anyBasetoDecimal(decimal, base);
-        String anybase = decimaltoAnyBase(decimal, base2);
+        String number = num.next();
+        System.out.print("Enter the base of the number: ");
+        int initialbase = num.nextInt();
+        System.out.println("Enter the base to convert to: ");
+        int basechange = num.nextInt();
+        int decimalValue = anyBasetoDecimal(number, initialbase);
         
-
+        String anybase = decimaltoAnyBase(decimalValue, basechange);
+        num.close();
     }
     public static String anyBasetoDecimal(int decimal, int base){
+        int decimal = 0;
+        int length = number.length();
+        for (int i = 0; i < length - 1; i++){
+
+        }
 
        return num; 
     }
     public static String decimaltoAnyBase(int decimal, int base2) {
-        return numb;
+        return result.toString();
     }
 }
