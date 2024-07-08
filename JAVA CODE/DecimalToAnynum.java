@@ -1,4 +1,4 @@
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 public class DecimalToAnynum {
     public static void main(String[] args) {
@@ -26,4 +26,4 @@ public class DecimalToAnynum {
     public static String decimaltoAnyBase(int decimal, int base2) {
         return result.toString();
     }
-}
+}*/
