@@ -1,39 +1,20 @@
 import java.util.Arrays;
 
-public class SpecialArray {
-    class Solution {
-    private int getFirstGreaterOrEqual(int[] nums, int val) {
-        int start = 0;
-        int end = nums.length - 1;
-
-        int index = nums.length;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-
-            if (nums[mid] >= val) {
-                index = mid;
-                end = mid - 1;
-            } else {
-                start = mid + 1;
-            }
-        }
-
-        return index;
-    }
-
+class Solution {
     public int specialArray(int[] nums) {
-        Arrays.sort(nums);
-
-        int N = nums.length;
-        for (int i = 1; i <= N; i++) {
-            int k = getFirstGreaterOrEqual(nums, i);
-
-            if (N - k == i) {
-                return i;
+        Arrays.sort(nums); // Sorting the array
+        int N = nums.length; // Length of the array
+        for (int x = 1; x <= N; x++) { // Looping through the array
+            int count = 0; // Initializing count to 0
+            for (int num : nums) { // iterating through each element int the array
+                if (num >= x) { // Checking if the element is greater than or equal to x
+                    count++; // Incrementing the count
+                }
+            }
+            if (count == x) { // Checking if the count is equal to x
+                return x; // Returning x
             }
         }
-
-        return -1;
+        return -1; // Returning -1 if no such x exists
     }
-}
 }
