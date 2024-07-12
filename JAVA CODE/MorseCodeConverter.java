@@ -1,31 +1,27 @@
 import java.util.Scanner;
-
 public class MorseCodeConverter {
     public static void main(String[] args) {
         String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         String[] morseCodes = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
-
-        Scanner scanner = new Scanner(System.in);
-
+        Scanner word = new Scanner(System.in);
         int choice;
         do {
-            System.out.println("Enter 1 for String to Morse code conversion");
-            System.out.println("Enter 2 for Morse code to String conversion");
+            System.out.println("Enter 1 to convert from String to Morse code");
+            System.out.println("Enter 2 to convert from Morse code to String");
             System.out.println("Enter 3 to Exit");
-            choice = scanner.nextInt();
-
+            choice = word.nextInt();
             switch (choice) {
                 case 1:
                     System.out.println("Enter a string:");
-                    scanner.nextLine(); // Consume the newline character
-                    String inputString = scanner.nextLine().toUpperCase();
+                    word.nextLine();
+                    String inputString = word.nextLine().toUpperCase();
                     String morseCode = convertToMorseCode(inputString, letters, morseCodes);
                     System.out.println("Morse code: " + morseCode);
                     break;
                 case 2:
                     System.out.println("Enter Morse code:");
-                    scanner.nextLine(); // Consume the newline character
-                    String inputMorseCode = scanner.nextLine();
+                    word.nextLine();
+                    String inputMorseCode = word.nextLine();
                     String string = convertToString(inputMorseCode, letters, morseCodes);
                     System.out.println("String: " + string);
                     break;
@@ -37,8 +33,7 @@ public class MorseCodeConverter {
                     break;
             }
         } while (choice != 3);
-
-        scanner.close();
+        word.close();
     }
 
     public static String convertToMorseCode(String inputString, String[] letters, String[] morseCodes) {
