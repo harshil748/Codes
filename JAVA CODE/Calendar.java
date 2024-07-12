@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Calendar {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the month: ");
+        System.out.print("Enter the month: ");
         int month = input.nextInt();
-        System.out.println("Enter the year: ");
+        System.out.print("Enter the year: ");
         int year = input.nextInt();
         int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         if (isLeapYear(year)) {
@@ -18,7 +18,7 @@ public class Calendar {
     public static void displayCalendar(int month, int year, int[] daysInMonth) {
         String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December" };
-        String[] daysOfWeek = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+        String[] daysOfWeek = { " Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
         System.out.println("    " + months[month - 1] + " " + year);
         for (String day : daysOfWeek) {
             System.out.print(day + " ");
