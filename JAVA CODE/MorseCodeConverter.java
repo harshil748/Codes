@@ -50,7 +50,7 @@ public class MorseCodeConverter {
                 morseCode.append(morseCodes[index]).append(" ");
             }
         }
-        return morseCode.toString().trim();
+        return morseCode.toString();
     }
 
     public static String convertToString(String inputMorseCode, String[] letters, String[] morseCodes) {
