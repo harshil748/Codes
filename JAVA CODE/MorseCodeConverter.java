@@ -18,14 +18,14 @@ public class MorseCodeConverter {
             choice = word.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Enter a string:");
+                    System.out.println("Enter a string: ");
                     word.nextLine();
                     String inputString = word.nextLine().toUpperCase();
                     String morseCode = convertToMorseCode(inputString, letters, morseCodes);
                     System.out.println("Morse code: " + morseCode);
                     break;
                 case 2:
-                    System.out.println("Enter Morse code:");
+                    System.out.println("Enter Morse code: ");
                     word.nextLine();
                     String inputMorseCode = word.nextLine();
                     String string = convertToString(inputMorseCode, letters, morseCodes);
