@@ -59,7 +59,7 @@ public class MorseCodeConverter {
         for (String code : codes) {
             for (int i = 0; i < morseCodes.length; i++) {
                 if (code.equals(morseCodes[i])) {
-                    string.append(letters[i]);
+                    string.append(letters[i]).append(" ");
                     break;
                 }
             }
