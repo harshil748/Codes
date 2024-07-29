@@ -53,7 +53,7 @@
   },
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
-  "java.project.sourcePaths": ["JAVA CODE"],
+  "java.project.sourcePaths": ["/Users/harshilpatel/CODE/JAVA CODE/class"],
   "java.project.referencedLibraries": [],
   "java.project.outputPath": "JAVA CODE"
 }
