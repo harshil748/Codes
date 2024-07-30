@@ -22,3 +22,4 @@ print("Data type of addition:", type(addition))
 print("Data type of subtraction:", type(subtraction))
 print("Data type of division:", type(division))
 print("Data type of multiplication:", type(multiplication))
+# Practical 1.7
