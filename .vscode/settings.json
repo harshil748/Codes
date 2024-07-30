@@ -55,5 +55,5 @@
   "python.analysis.typeCheckingMode": "basic",
   "java.project.sourcePaths": ["JAVA CODE"],
   "java.project.referencedLibraries": [],
-  "java.project.outputPath": "bin"
+  "java.project.outputPath": "JAVA CODE"
 }
