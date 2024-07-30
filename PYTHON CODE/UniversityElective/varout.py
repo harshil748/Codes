@@ -7,3 +7,4 @@ print(university + " was established in " + str(establish_in))
 print(university + " is located on " )
 print("longitude " + str(location_log))
 print("latitude " + str(location_lat))
+# Practical 1.4
