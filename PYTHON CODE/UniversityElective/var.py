@@ -6,3 +6,4 @@ print(type(university))
 print(type(establish_in))
 print(type(location_lat))
 print(type(location_log))
+# Practical 1.3
