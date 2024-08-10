@@ -2,33 +2,39 @@ import java.util.Scanner;
 
 public class StringOverloading {
 
-    public static void processString(String input) {
-        if (!input.contains(" ")) {
-            String modifiedString = input.replace('A', 'Z');
-            System.out.println("Modified string: " + modifiedString);
-            System.out.println("Length of the string: " + modifiedString.length());
-        } else {
-            int midIndex = input.length() / 2;
-            String firstHalf = input.substring(0, midIndex);
-            String secondHalf = "CHARUSAT";
-            String finalString = firstHalf + secondHalf;
-            System.out.println("Modified string: " + finalString);
-        }
-    }
-
-    public static void processString(String input, int maxLength) {
-        if (input.length() > 10 && input.contains(" ")) {
-            String lowercaseString = input.toLowerCase();
-            System.out.println("Modified string: " + lowercaseString);
-        }
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String inputString = scanner.nextLine();
-        processString(inputString);
-        processString(inputString, 10);
+
+        if (inputString.contains(" ")) {
+            if (inputString.length() > 10) {
+                processString(inputString);
+            } else {
+                processStringWithSpace(inputString);
+            }
+        } else {
+            processStringWithoutSpace(inputString);
+        }
         scanner.close();
+    }
+
+    public static void processStringWithoutSpace(String str) {
+        String modifiedString = str.replace('A', 'Z');
+        System.out.println("Modified string: " + modifiedString);
+        System.out.println("Length of the string: " + str.length());
+    }
+
+    public static void processStringWithSpace(String str) {
+        String[] parts = str.split(" ");
+        String firstHalf = parts[0];
+        String secondHalf = "CHARUSAT";
+        String modifiedString = firstHalf + " " + secondHalf;
+        System.out.println("Modified string: " + modifiedString);
+    }
+
+    public static void processString(String str) {
+        String modifiedString = str.toLowerCase();
+        System.out.println("Modified string: " + modifiedString);
     }
 }
