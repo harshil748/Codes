@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import harmonic.HarmonicSeries;
+
 public class Harmonic {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
