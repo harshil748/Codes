@@ -1,4 +1,5 @@
 package harmonic;
+
 public class HarmonicSeries {
     public double calculate(int n) {
         double sum = 0.0;
