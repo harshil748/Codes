@@ -35,7 +35,6 @@ class LinkedList:
                 temp = temp.next
             print()
 
-# Example usage
 linked_list = LinkedList()
 linked_list.insert_at_first(5)
 linked_list.insert_at_first(4)
