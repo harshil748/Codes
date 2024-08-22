@@ -1,8 +1,8 @@
-
 class Node:
     def __init__(llist, data):
         llist.data = data
         llist.next = None
+
 
 class LinkedList:
     def __init__(llist):
@@ -12,14 +12,14 @@ class LinkedList:
         new_node = Node(data)
         new_node.next = llist.head
         llist.head = new_node
-    
+
     def ispalindrome(llist):
         slow = llist.head
         fast = llist.head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
+
         prev = None
         curr = slow
         while curr:
@@ -27,14 +27,14 @@ class LinkedList:
             curr.next = prev
             prev = curr
             curr = next_node
-        
+
         first_half = llist.head
         while prev and first_half:
             if prev.data != first_half.data:
                 return False
             prev = prev.next
             first_half = first_half.next
-        
+
         return True
 
     def display(llist):
@@ -46,6 +46,7 @@ class LinkedList:
                 print(temp.data, end=" ")
                 temp = temp.next
             print()
+
 
 linked_list = LinkedList()
 linked_list.insert_at_first(1)
