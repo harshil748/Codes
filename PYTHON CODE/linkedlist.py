@@ -42,8 +42,11 @@ class LinkedList:
 
 
 linked_list = LinkedList()
-linked_list.insertatfirst(3) 
+print("Add elements to the linked list")
+linked_list.insertatfirst(3)
 linked_list.insertatfirst(2)
 linked_list.insertatfirst(1)
+print("Delete last element")
 linked_list.deleteatlast()
+print("Delete all elements")
 linked_list.deleteall()
