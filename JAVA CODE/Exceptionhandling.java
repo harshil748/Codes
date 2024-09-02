@@ -19,9 +19,9 @@ class OwnException {
 
     public void testValue(int value) throws SmallException, BigException {
         if (value < 5) {
-            throw new SmallException("Value is lower than 5");
+            throw new SmallException("Value "+value +" is lower than 5");
         } else if (value > 10) {
-            throw new BigException("Value is higher than 10");
+            throw new BigException("Value "+value +" is higher than 10");
         }
     }
 }
