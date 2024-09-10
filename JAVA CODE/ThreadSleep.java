@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadSleep {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the salaries of five employees: ");
         int[] salaries = new int[5];
