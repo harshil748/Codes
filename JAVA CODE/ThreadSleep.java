@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class ThreadSleep {
     public static void main(String[] args) throws Exception {
@@ -12,7 +11,7 @@ public class ThreadSleep {
         }
         for (int i = 0; i < salaries.length; i++) {
             salaries[i] = (int) (salaries[i] * 1.05);
-            TimeUnit.MILLISECONDS.sleep(2000);
+            Thread.sleep(2000);
         }
         System.out.println("New salaries: " + Arrays.toString(salaries));
         sc.close();
