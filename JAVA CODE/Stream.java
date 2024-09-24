@@ -7,6 +7,7 @@ public class Stream {
             int c;
             while ((c = fis.read()) != -1) {
                 fos.write(c);
+                System.out.println(c);
             }
             fis.close();
             fos.close();
