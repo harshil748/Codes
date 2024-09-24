@@ -16,6 +16,7 @@ public class FileHandling {
             System.out.println("File exists: " + obj.length());
             System.out.println("File readable: " + obj.canRead());
             System.out.println("File writable: " + obj.canWrite());
+            System.out.println("Canonical path: " + obj.getCanonicalPath());
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
