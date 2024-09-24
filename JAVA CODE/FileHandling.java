@@ -1,9 +1,9 @@
 import java.io.*;
 
 public class FileHandling {
-    void createFile() {
+    public static void main(String[] args) {
         try {
-            File obj = new File("C:\\Users\\User\\Desktop\\Java\\JAVA CODE\\files\\filename.txt");
+            File obj = new File("filename.txt");
             if (obj.createNewFile()) {
                 System.out.println("File created: " + obj.getName());
             } else {
@@ -13,6 +13,5 @@ public class FileHandling {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
     }
 }
