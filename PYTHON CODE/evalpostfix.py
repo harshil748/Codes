@@ -17,6 +17,6 @@ def evaluate_postfix(expression):
     return stack[0]
 
 expression = input("Enter the postfix expression: ")
-print("The entered post expression is"+expression)
+print("The entered post expression is: "+expression)
 result = evaluate_postfix(expression)
 print(result)

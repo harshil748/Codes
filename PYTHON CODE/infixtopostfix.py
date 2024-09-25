@@ -1,3 +1,8 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
 class Stack:
     def __init__(self):
         self.top = None
@@ -26,11 +31,10 @@ class Stack:
         return count
 
 
-    def infix_to_postfix(expression):
-        precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
-        stack = []
-        postfix = ""
-
+def infix_to_postfix(expression):
+    precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
+    stack = []
+    postfix = ""
     for ch in expression:
         if ch.isalpha():
             postfix += ch
