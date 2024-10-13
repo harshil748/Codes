@@ -3,7 +3,7 @@ abstract class Instrument {
     abstract String what();
     abstract void adjust();
 }
-
+// Java Practical 3.1
 class Wind extends Instrument {
     @Override
     void play() {
