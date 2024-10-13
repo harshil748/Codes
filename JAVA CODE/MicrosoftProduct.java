@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// Java Practical 2.1
 public class MicrosoftProduct {
     private float productNo;
     private String productName;
