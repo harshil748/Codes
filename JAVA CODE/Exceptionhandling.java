@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// Java Practical 4.2
 class SmallException extends Exception {
     public SmallException(String message) {
         super(message);
