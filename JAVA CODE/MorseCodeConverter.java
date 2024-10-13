@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// Java Practical 1.4
 public class MorseCodeConverter {
     public static void main(String[] args) {
         String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
