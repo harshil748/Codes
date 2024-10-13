@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+// Java Practical 5.1
 class Person {
     String info;
 
