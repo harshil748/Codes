@@ -34,7 +34,7 @@ public class GasMeter {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(true){
-            System.out.println("what do you want: 1=95, 2=98, 3=Diesel (type any other number to quit): ");
+            System.out.println("What do you want: 1 = 95 Octane, 2 = 98 Octane, 3 = Diesel (type any other number to quit): ");
             int choice = sc.nextInt();
             if (choice < 1 || choice > 3) {
                 break;
