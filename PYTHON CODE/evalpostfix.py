@@ -19,4 +19,4 @@ def evaluate_postfix(expression):
 expression = input("Enter the postfix expression: ")
 print("The entered post expression is: "+expression)
 result = evaluate_postfix(expression)
-print(result)
+print("The ans is : ",result)
