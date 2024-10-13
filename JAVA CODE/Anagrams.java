@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-
+// Java Practical 1.5
 public class Anagrams {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
