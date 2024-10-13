@@ -1,30 +1,30 @@
 class Node:
-    def __init__(llist, data):
+    def __init__(llist, data): # type: ignore
         llist.data = data
         llist.next = None
 
 
 class LinkedList:
-    def __init__(llist):
+    def __init__(llist): # type: ignore # type: ignore
         llist.head = None
 
-    def insert_at_first(llist, data):
+    def insert_at_first(llist, data): # type: ignore
         new_node = Node(data)
-        new_node.next = llist.head
+        new_node.next = llist.head # type: ignore
         llist.head = new_node
 
-    def ispalindrome(llist):
+    def ispalindrome(llist): # type: ignore
         slow = llist.head
         fast = llist.head
         while fast and fast.next:
-            slow = slow.next
+            slow = slow.next # type: ignore
             fast = fast.next.next
 
         prev = None
         curr = slow
         while curr:
             next_node = curr.next
-            curr.next = prev
+            curr.next = prev # type: ignore
             prev = curr
             curr = next_node
 
@@ -37,7 +37,7 @@ class LinkedList:
 
         return True
 
-    def display(llist):
+    def display(llist): # type: ignore
         if llist.head is None:
             print("List is empty")
         else:
