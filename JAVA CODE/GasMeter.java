@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// Java Practical 2.4
 public class GasMeter {
     private static double octane95 = 0.0;
     private static double octane98 = 0.0;
