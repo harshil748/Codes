@@ -1,5 +1,5 @@
 import java.util.Date;
-
+// Java Practical 2.2
 public class Account {
     private int id;
     private double balance;
