@@ -1,19 +1,19 @@
 class Node:
-    def __init__(llist, data): # type: ignore
+    def __init__(llist, data):
         llist.data = data
         llist.next = None
 
 
 class LinkedList:
-    def __init__(llist): # type: ignore # type: ignore
+    def __init__(llist): 
         llist.head = None
 
-    def insert_at_first(llist, data): # type: ignore
+    def insert_at_first(llist, data): 
         new_node = Node(data)
         new_node.next = llist.head # type: ignore
         llist.head = new_node
 
-    def ispalindrome(llist): # type: ignore
+    def ispalindrome(llist): 
         slow = llist.head
         fast = llist.head
         while fast and fast.next:
@@ -37,7 +37,7 @@ class LinkedList:
 
         return True
 
-    def display(llist): # type: ignore
+    def display(llist): 
         if llist.head is None:
             print("List is empty")
         else:
