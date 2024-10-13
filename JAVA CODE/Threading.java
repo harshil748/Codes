@@ -4,7 +4,7 @@ class MyThread extends Thread {
         System.out.println("Hello World");
     }
 }
-
+// Java Practical 6.1
 class MyRunnable implements Runnable {
     public void run() {
         System.out.println("Printing by using Runnable interface");
