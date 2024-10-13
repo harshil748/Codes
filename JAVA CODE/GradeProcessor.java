@@ -1,5 +1,5 @@
 import java.io.*;
-
+// Java Practical 5.2
 public class GradeProcessor {
     public static void main(String[] args) {
         String inputFile = "grades.txt";
