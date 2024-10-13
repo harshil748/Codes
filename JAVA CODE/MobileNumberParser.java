@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// Java Practical 1.2
 public class MobileNumberParser {
 
     public static void main(String[] args) {
