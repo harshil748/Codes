@@ -1,7 +1,7 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+// Java Practical 5.3
 public class DirectoryStructure {
     public static void main(String[] args) {
         try {
