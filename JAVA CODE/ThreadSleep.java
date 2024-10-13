@@ -1,19 +1,25 @@
-import java.util.Arrays;
 import java.util.Scanner;
-
+// Java Practical 6.2
 public class ThreadSleep {
-    public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the salaries of five employees: ");
-        int[] salaries = new int[5];
+    public static void main(String[] args) {
+        double[] salaries = new double[5];
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < salaries.length; i++) {
-            salaries[i] = sc.nextInt();
+            System.out.print("Enter salary for employee " + (i + 1) + ": ");
+            salaries[i] = scanner.nextDouble();
         }
-        for (int i = 0; i < salaries.length; i++) {
-            salaries[i] = (int) (salaries[i] * 1.05);
-            Thread.sleep(2000);
-        }
-        System.out.println("New salaries: " + Arrays.toString(salaries));
-        sc.close();
+        Thread incrementThread = new Thread(() -> {
+            for (int i = 0; i < salaries.length; i++) {
+                salaries[i] += salaries[i] * 0.05;
+                System.out.println("New salary of employee " + (i + 1) + ": " + salaries[i]);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    System.out.println("Thread interrupted: " + e.getMessage());
+                }
+            }
+        });
+        incrementThread.start();
+        scanner.close();
     }
 }
