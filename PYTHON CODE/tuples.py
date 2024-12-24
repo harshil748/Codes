@@ -1,0 +1,6 @@
+integers = (1, 2, 3)
+floats = (1.1, 2.2, 3.3)
+strings = ("a", "b", "c")
+mixed = ("a", 1, "b", 2.2)
+print("Positive index ", integers[1])  
+print("Negative index ", integers[-1])

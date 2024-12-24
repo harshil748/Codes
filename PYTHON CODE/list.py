@@ -1,4 +1,6 @@
-flowers = ["Rose", "Lily", "Sunflower", "Tulip", "Daisy"]
+strings= ["a", "b", "c"]
+integers = ["1", "2", "3"]
+mixed = ["a", 1, "b", 2]    
 print("a. Original list of flowers:")
 print(flowers)
 print("\nb. Second element of the list:")
