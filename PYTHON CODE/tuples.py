@@ -22,5 +22,3 @@ converted = tuple(sample)
 print("Converted tuple:", converted)  
 converted_list = list(converted)
 print("Converted list:", converted_list) 
-
-# unpacked left
