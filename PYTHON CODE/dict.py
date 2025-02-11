@@ -36,5 +36,5 @@ dict1.update(dict2)
 print("Merge two dictionaries using update():", dict2)
 unsorted_dict = {"apple": 3, "banana": 1, "cherry": 2}
 print("Unsorted dictionary:", unsorted_dict)
-sorted_dict = dict(sorted(unsorted_dict.items(), key=lambda item: item[1]))
+sorted_dict = dict(sorted(unsorted_dict.items()))
 print("sorted dict:", sorted_dict)
