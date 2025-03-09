@@ -1,5 +1,5 @@
 strings = ["a", "b", "c"]
-integers = ["1", "2", "3"]
+integers = [1, 2, 3]
 mixed = ["a", 1, "b", 2]
 print("First element of strings:", strings[0])
 print("Last twi elements of integers:", integers[-2:])
