@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verify OTP</title>
+</head>
+<body>
+    <h2>Enter OTP</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="otp" placeholder="Enter OTP" required>
+        <button type="submit">Verify OTP</button>
+    </form>
+</body>
+</html>
