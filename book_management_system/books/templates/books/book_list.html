@@ -1,0 +1,23 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+    <h2>All Books</h2>
+    {% if books %}
+        <ul class="book-list">
+            {% for book in books %}
+                <li class="book-item">
+                    <h3>{{ book.title }}</h3>
+                    <p>By: {{ book.author }}</p>
+                    <p>Genre: {{ book.genre }}</p>
+                    <div class="book-actions">
+                        <a href="{% url 'book-detail' book.pk %}">View Details</a>
+                        <a href="{% url 'book-update' book.pk %}">Edit</a>
+                        <a href="{% url 'book-delete' book.pk %}">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books available.</p>
+    {% endif %}
+{% endblock %}
