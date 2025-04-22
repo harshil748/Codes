@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from googlesearch import search
 import requests
@@ -31,22 +32,35 @@ def find_company_info(company_name):
         return "Error", "Error"
 
 def main():
-    input_file = "companiescopy.csv"  # Your file
+    import os
+
+    input_file = "companies.csv"
     output_file = "companies_with_contact_info.csv"
 
     df = pd.read_csv(input_file)
-    df['Website'] = ""
-    df['Email(s)'] = ""
+
+    if os.path.exists(output_file):
+        try:
+            processed_df = pd.read_csv(output_file)
+        except pd.errors.EmptyDataError:
+            processed_df = pd.DataFrame(columns=df.columns)
+        df = df[~df['Company Name'].isin(processed_df['Company Name'])]
+        final_df = processed_df
+    else:
+        df['Website'] = ""
+        df['Email(s)'] = ""
+        final_df = pd.DataFrame(columns=df.columns)
 
     for i, row in df.iterrows():
         company_name = row['Company Name']
         print(f"🔍 Searching: {company_name}")
         website, emails = find_company_info(company_name)
-        df.at[i, 'Website'] = website
-        df.at[i, 'Email(s)'] = emails
-        time.sleep(2)  # Prevent getting blocked by Google
+        row['Website'] = website
+        row['Email(s)'] = emails
+        final_df = pd.concat([final_df, pd.DataFrame([row])], ignore_index=True)
+        final_df.to_csv(output_file, index=False)
+        time.sleep(2)
 
-    df.to_csv(output_file, index=False)
     print(f"\n✅ All done! Results saved to: {output_file}")
 
 if __name__ == "__main__":
