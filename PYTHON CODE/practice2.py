@@ -4,9 +4,9 @@ from email.message import EmailMessage
 import ssl
 import time
 
-CSV_FILE = "companies_with_contact_info.csv"
+CSV_FILE = "companylistfinal.csv"
 RESUME_FILE = "resume.pdf"
-YOUR_EMAIL = "pharshil748@gmail.com"  
+YOUR_EMAIL = "pharshil748@gmail.com"
 APP_PASSWORD = "nwka dvjh hsun fehn"  
 
 
@@ -39,16 +39,15 @@ def send_email(to_email, subject, body, attachment_path):
 def main():
     df = pd.read_csv(CSV_FILE)
     template = """
-Dear Hiring Manager,
+Respected Hiring Manager,
 
 I am writing to express my interest in the summer internship opportunity at [Company Name]. As a B.Tech student in Computer Engineering at CHARUSAT and a current AI minor student at IIT Mandi, I am excited to bring my technical foundation, problem-solving mindset, and hands-on project experience into a dynamic and growth-driven environment.
 
-Throughout my academic journey, I have built and contributed to projects that reflect real-world problem-solving. Most recently, I developed PyLock, a secure desktop password manager featuring custom password reset logic and email-based two-factor authentication. As part of the Smart India Hackathon 2024, I worked on Trace Tracker, a blockchain analytics tool aimed at tracking illicit cryptocurrency transactions, integrating neural networks and data pattern recognition.
+Throughout my academic journey, I have built and contributed to projects that reflect real-world problem-solving. Most recently, I developed PyLock, a secure desktop password manager featuring custom password reset logic and email-based two-factor authentication, and I also fully built and deployed my portfolio website using React.js, Next.js, and Tailwind CSS. You can check it out at harshilpatel.me.
 
 My proficiency in languages like Python, Java, and C++, combined with experience using tools like TensorFlow, SQLite, allows me to quickly adapt and contribute to diverse technical environments. Beyond programming, I bring a collaborative attitude, a strong willingness to learn, and an eye for secure, scalable solutions.
 
 I am eager to apply my skills and enthusiasm in a real-world setting, contribute meaningfully to your team, and continue growing as a developer. I would welcome the opportunity to discuss how I can support your work and learn from your team this summer.
-
 Thank you for considering my application. I look forward to the opportunity to speak with you further.
 
 Sincerely,  
