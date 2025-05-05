@@ -127,5 +127,5 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
 
-# Form rendering settings for Bootstrap
-FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+# Removed the problematic form renderer setting
+# FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
