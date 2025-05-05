@@ -1,0 +1,102 @@
+{% extends 'library/base.html' %} {% block title %}Client Dashboard - Library
+Management System{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <h2>Client Dashboard</h2>
+    <p>
+      Welcome to the Library Management System. You can browse and borrow books
+      from here.
+    </p>
+  </div>
+</div>
+
+<!-- Currently Borrowed Book Section -->
+<div class="row mb-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3>Your Borrowed Book</h3>
+      </div>
+      <div class="card-body">
+        {% if borrowed_book %}
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ borrowed_book.title }}</h5>
+                <p class="card-text">Author: {{ borrowed_book.author }}</p>
+                <p class="card-text">Genre: {{ borrowed_book.genre }}</p>
+                <p class="card-text">ISBN: {{ borrowed_book.ISBN }}</p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Published on {{ borrowed_book.publication_date }}</small
+                  >
+                </p>
+                <a href="{% url 'return_book' %}" class="btn btn-primary"
+                  >Return Book</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <p class="text-center">
+          You don't have any books borrowed at the moment.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Available Books Section -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3>Available Books</h3>
+      </div>
+      <div class="card-body">
+        {% if available_books %}
+        <div class="row">
+          {% for book in available_books %}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+                <p class="card-text">Genre: {{ book.genre }}</p>
+                <p class="card-text">ISBN: {{ book.ISBN }}</p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >Published on {{ book.publication_date }}</small
+                  >
+                </p>
+              </div>
+              <div class="card-footer">
+                {% if borrowed_book %}
+                <button class="btn btn-primary" disabled>
+                  Already Borrowed a Book
+                </button>
+                {% else %}
+                <a
+                  href="{% url 'borrow_book' book.id %}"
+                  class="btn btn-primary"
+                  >Borrow Book</a
+                >
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">
+          No books are available for borrowing at the moment.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
