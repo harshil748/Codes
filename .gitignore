@@ -11,5 +11,9 @@ node_modules/
 *.pyc
 *.pyo
 *.pyd
+*.rlib
+*.rmeta
+target/
 *.ipynb_checkpoints/
 __pycache__/
+test
