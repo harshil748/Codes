@@ -1,0 +1,15 @@
+*.code-workspace
+*.tmp
+*.log
+*.DS_Store
+*.vscode-test/
+*.env
+node_modules/
+*.class
+*.o
+*.obj
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints/
+__pycache__/
