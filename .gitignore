@@ -1,7 +1,7 @@
 *.code-workspace
 *.tmp
 *.log
-*.DS_Store
+.DS_Store
 *.vscode-test/
 *.env
 node_modules/
