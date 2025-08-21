@@ -10,8 +10,6 @@ from collections import Counter
 import math
 import random
 
-# ==================== LOGISTIC REGRESSION IMPLEMENTATION ====================
-
 
 class LogisticRegression:
     def __init__(self, learning_rate=0.01, max_iterations=1000):
@@ -181,7 +179,7 @@ class DecisionTree:
 
         # Split the data
         left_mask = X[:, best_feature] <= best_threshold
-        right_mask = X[:, best_feature] > threshold
+        right_mask = X[:, best_feature] > best_threshold
 
         # Check minimum samples per leaf
         if (
