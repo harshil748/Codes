@@ -47,3 +47,9 @@ build/
 *.sublime-workspace
 *.sublime-project
 .obj
+*.venv
+*.pyc
+*.pyo
+*.pyd
+*.rlib
+*.rmeta
