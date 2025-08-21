@@ -569,20 +569,5 @@ def main():
             f"PSNR {result['psnr']:5.1f} dB"
         )
 
-    print("\nKey Features Implemented:")
-    print("✓ 2D Discrete Cosine Transform (DCT)")
-    print("✓ JPEG quantization with quality control")
-    print("✓ Huffman coding for entropy encoding")
-    print("✓ Complete JPEG compression/decompression pipeline")
-    print("✓ Text compression using Huffman coding")
-    print("✓ Performance metrics (PSNR, compression ratio)")
-
-    print("\nApplications:")
-    print("• Image compression for web and storage")
-    print("• Text compression for data transmission")
-    print("• Lossy vs lossless compression trade-offs")
-    print("• Frequency domain analysis and compression")
-
-
 if __name__ == "__main__":
     main()
