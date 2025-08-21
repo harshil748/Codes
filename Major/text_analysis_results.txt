@@ -1,0 +1,42 @@
+TEXT ANALYSIS RESULTS
+==================================================
+
+Total Words: 207
+Unique Words: 104
+Vocabulary Richness: 0.5024
+
+TOP 20 MOST COMMON WORDS:
+------------------------------
+ 1. data              7
+ 2. systems           6
+ 3. information       5
+ 4. big               4
+ 5. analytics         4
+ 6. reveals           4
+ 7. patterns          4
+ 8. insights          4
+ 9. large             4
+10. datasets          4
+11. digital           4
+12. learning          4
+13. computers         4
+14. network           3
+15. communication     3
+16. computational     3
+17. machine           3
+18. algorithms        3
+19. process           3
+20. vast              3
+
+LONGEST WORDS:
+------------------------------
+implementation       (length: 14, freq: 1)
+revolutionized       (length: 14, freq: 1)
+communication        (length: 13, freq: 3)
+computational        (length: 13, freq: 3)
+decentralized        (length: 13, freq: 2)
+unprecedented        (length: 13, freq: 1)
+biotechnology        (length: 13, freq: 1)
+optimization         (length: 12, freq: 2)
+transactions         (length: 12, freq: 2)
+connectivity         (length: 12, freq: 1)
