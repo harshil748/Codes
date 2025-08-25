@@ -20,12 +20,11 @@ class LogisticRegression:
 
     def sigmoid(self, z):
         """Sigmoid activation function"""
-        z = np.clip(z, -500, 500)  # Prevent overflow
+        z = np.clip(z, -500, 500)
         return 1 / (1 + np.exp(-z))
 
     def fit(self, X, y):
         """Train the logistic regression model"""
-        # Initialize parameters
         n_samples, n_features = X.shape
         self.weights = np.zeros(n_features)
         self.bias = 0
@@ -54,7 +53,6 @@ class LogisticRegression:
 
     def compute_cost(self, y_true, y_pred):
         """Compute logistic regression cost function"""
-        # Avoid log(0) by adding small epsilon
         epsilon = 1e-15
         y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
         return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
@@ -101,7 +99,6 @@ class DecisionTree:
 
     def information_gain(self, X_column, y, threshold):
         """Calculate information gain for a split"""
-        # Parent entropy
         parent_entropy = self.entropy(y)
 
         # Split the data
@@ -261,7 +258,6 @@ class DecisionTree:
 
         # Keep pruning if accuracy doesn't decrease
         if after_accuracy < before_accuracy:
-            # Restore original node
             node.left = original_left
             node.right = original_right
             node.feature = original_feature
