@@ -1,0 +1,153 @@
+/*
+ * YACC File for Expression & Conditional Parser
+ * Purpose: Parse arithmetic expressions and conditional statements
+ * Features: Operator precedence, dangling else resolution, error recovery
+ */
+
+%{
+#include <stdio.h>
+#include <stdlib.h>
+
+int yylex();
+void yyerror(const char *s);
+extern FILE *yyin;
+int line_num = 1;
+int error_count = 0;
+int success_count = 0;
+%}
+
+/* Modern error reporting */
+%define parse.error verbose
+
+/* Tokens */
+%token IF ELSE ID NUM
+%token GE LE EQ NE          /* >=, <=, ==, != */
+%token AND OR NOT           /* &&, ||, ! */
+
+/* Precedence and Associativity (lowest to highest) */
+%right '=' 
+%left OR                    /* Logical OR */
+%left AND                   /* Logical AND */
+%left EQ NE                 /* == != */
+%left '<' '>' LE GE         /* < > <= >= */
+%left '+' '-'               /* Addition, Subtraction */
+%left '*' '/' '%'           /* Multiplication, Division, Modulus */
+%right NOT UMINUS           /* Unary NOT, Unary MINUS */
+%left '(' ')'               /* Parentheses */
+
+/* Dangling else resolution */
+%nonassoc LOWER_THAN_ELSE
+%nonassoc ELSE
+
+/* Expected conflicts: 1 shift/reduce (dangling else) */
+%expect 1
+
+/* Error recovery */
+%error-verbose
+
+%%
+
+/* Grammar Rules */
+
+program:
+    /* empty */
+    | stmt_list                 { 
+                                    if (error_count == 0) {
+                                        printf("Parsing successful.\n");
+                                    } else {
+                                        printf("Parsing completed with %d error(s).\n", error_count);
+                                    }
+                                }
+    ;
+
+stmt_list:
+    stmt                        { success_count++; }
+    | stmt_list stmt            { success_count++; }
+    ;
+
+stmt:
+    assignment_stmt
+    | if_stmt
+    | compound_stmt
+    | error ';'                 { 
+                                    yyerrok; 
+                                    error_count++;
+                                }
+    ;
+
+assignment_stmt:
+    ID '=' expr ';'
+    ;
+
+if_stmt:
+    IF '(' cond ')' stmt %prec LOWER_THAN_ELSE
+    | IF '(' cond ')' stmt ELSE stmt
+    | IF '(' error ')' stmt     { 
+                                    yyerrok; 
+                                    error_count++;
+                                }
+    ;
+
+compound_stmt:
+    '{' stmt_list '}'
+    | '{' '}'
+    ;
+
+cond:
+    expr relop expr
+    | expr
+    | cond AND cond
+    | cond OR cond
+    | NOT cond
+    | '(' cond ')'
+    ;
+
+relop:
+    '>'                         
+    | '<'                       
+    | GE                        
+    | LE                        
+    | EQ                        
+    | NE                        
+    ;
+
+expr:
+    expr '+' expr
+    | expr '-' expr
+    | expr '*' expr
+    | expr '/' expr
+    | expr '%' expr
+    | '-' expr %prec UMINUS
+    | '(' expr ')'
+    | ID
+    | NUM
+%%
+
+/* Error handling function */
+void yyerror(const char *s) {
+    fprintf(stderr, "Error at line %d: %s\n", line_num, s);
+    error_count++;
+}
+
+/* Main function */
+int main(int argc, char **argv) {
+    if (argc > 1) {
+        FILE *file = fopen(argv[1], "r");
+        if (!file) {
+            fprintf(stderr, "Error: Cannot open file '%s'\n", argv[1]);
+            return 1;
+        }
+        yyin = file;
+    } else {
+        printf("Reading from standard input (Ctrl+D to end):\n\n");
+    }
+    
+    yyparse();
+    
+    if (argc > 1) {
+        fclose(yyin);
+    }
+    
+    printf("\n==========================================================\n");
+    return (error_count == 0) ? 0 : 1;
+}

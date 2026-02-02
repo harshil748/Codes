@@ -1,0 +1,19 @@
+// Valid Test Cases - Arithmetic Expressions
+a = (m + n*3) / (x - y);
+b = x + y - z;
+c = a * b + c / d;
+result = (a + b) * (c - d);
+
+// Valid Test Cases - If Statements
+if(a > b) x = a + 2; else x = b - 1;
+if(x < y) z = x;
+if(m >= n) p = m + n;
+
+// Valid Test Cases - Nested If-Else
+if(a > b) if(c < d) y = c + d; else y = c - d;
+if(x > 0) if(y > 0) z = x + y; else z = x - y; else z = 0;
+
+// Valid Test Cases - Logical Operators
+if(a > b && c < d) x = 1;
+if(x == y || m != n) result = 0;
+if(!(a > b)) x = b;

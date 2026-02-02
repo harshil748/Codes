@@ -1,0 +1,28 @@
+// Invalid Test Cases for Error Detection
+
+// Missing semicolon
+a = (m + n
+
+// Unmatched parentheses  
+a = (m + n * 3;
+
+// Double operators
+a = m + * n;
+
+// Missing condition
+if() x = 5;
+
+// Missing closing brace in if
+if(a > b) x = a + b
+
+// Invalid else without if body
+if(a > b) else x = b;
+
+// Missing semicolon in assignment
+a = b + c
+
+// Incomplete expression
+x = ;
+
+// Invalid operator sequence
+y = a +/ b;
