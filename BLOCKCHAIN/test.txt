@@ -7,3 +7,6 @@ node2
 123456789
 Public address of the key:   0x4D2CE4dAF32591BFA96453116e40c6a03bfc4078
 Path of the secret key file: node2/keystore/UTC--2026-02-03T07-25-13.364099000Z--4d2ce4daf32591bfa96453116e40c6a03bfc4078
+
+
+enode://2c9b9c51344b7aef7fdbf53d807d44c560a178b09be09d463e5ded8e9e74dce2abbcadb7e1e61abd9be786a66ee26dfe25eba245a445125f469296857ce0f3ff@127.0.0.1:30303?discport=0
