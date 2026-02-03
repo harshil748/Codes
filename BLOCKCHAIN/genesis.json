@@ -1,0 +1,13 @@
+{
+	"config": {
+		"chainId": 12345,
+		"clique": {
+			"period": 5,
+			"epoch": 30000
+		}
+	},
+	"difficulty": "0x1",
+	"gasLimit": "0x7A1200",
+	"extraData": "7E560f12f927EDa1A85E5A0D40CfddA404eD35D0",
+	"alloc": {}
+}
