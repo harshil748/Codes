@@ -1,0 +1,173 @@
+===============================================
+PREDICTIVE PARSING TABLE - TEST CASES
+
+TEST CASE 1: LL(1) Grammar (NO CONFLICT)
+-----------------------------------------------
+Grammar:
+  S → AB
+  A → a | ε
+  B → b
+
+Input Format:
+4
+S->AB
+A->a
+A->#
+B->b
+
+Expected Output:
+- FIRST(S) = {a, b}
+- FIRST(A) = {a, ε}
+- FIRST(B) = {b}
+- FOLLOW(S) = {$}
+- FOLLOW(A) = {b}
+- FOLLOW(B) = {$}
+-  Grammar is LL(1) - No conflicts!
+
+
+TEST CASE 2: LEFT RECURSION (CONFLICT)
+-----------------------------------------------
+Grammar:
+  E → E+T | T
+  T → id
+
+Input Format:
+3
+E->E+T
+E->T
+T->i
+
+Expected Output:
+- CONFLICT detected at [E, i]
+- ❌ Grammar is NOT LL(1)
+- Reason: Left recursion causes FIRST-FIRST conflict
+
+Note: Remove left recursion to fix:
+  E → TE'
+  E' → +TE' | ε
+  T → id
+
+
+TEST CASE 3: LEFT FACTORING NEEDED (CONFLICT)
+-----------------------------------------------
+Grammar:
+  S → aA | aB
+  A → c
+  B → d
+
+Input Format:
+4
+S->aA
+S->aB
+A->c
+B->d
+
+Expected Output:
+- CONFLICT at [S, a]
+- ❌ Grammar is NOT LL(1)
+- Reason: Common prefix 'a' causes FIRST-FIRST conflict
+
+Fixed Grammar (After Left Factoring):
+  S → aS'
+  S' → A | B
+  A → c
+  B → d
+
+
+TEST CASE 4: NULLABLE WITH FOLLOW (LL(1))
+-----------------------------------------------
+Grammar:
+  S → AB
+  A → a | ε
+  B → b | ε
+
+Input Format:
+5
+S->AB
+A->a
+A->#
+B->b
+B->#
+
+Expected Output:
+- FIRST(S) = {a, b, ε}
+- FOLLOW(A) = {b, $}
+- FOLLOW(B) = {$}
+-  Grammar is LL(1) (if no conflicts)
+
+
+TEST CASE 5: SIMPLE EXPRESSION (LL(1))
+-----------------------------------------------
+Grammar:
+  E → TR
+  R → +TR | ε
+  T → FY
+  Y → *FY | ε
+  F → (E) | id
+
+Input Format:
+7
+E->TR
+R->+TR
+R->#
+T->FY
+Y->*FY
+Y->#
+F->i
+
+Expected Output:
+- FIRST(E) = {i}
+- FIRST(R) = {+, ε}
+- FOLLOW(R) = {$}
+-  Grammar is LL(1)
+
+
+TEST CASE 6: FIRST-FOLLOW CONFLICT
+-----------------------------------------------
+Grammar:
+  S → Aa | b
+  A → a | ε
+
+Input Format:
+4
+S->Aa
+S->b
+A->a
+A->#
+
+Expected Output:
+- CONFLICT at [S, a]
+- ❌ Grammar is NOT LL(1)
+- Reason: FIRST(A) = {a, ε}, FOLLOW(A) = {a}
+  When A → ε, we put "Aa" at [S, a]
+  But S → b would also need [S, a] (FIRST-FOLLOW conflict)
+
+
+HOW TO RUN:
+1. Compile: gcc pr6.c -o pr6.exe
+2. Run: ./pr6.exe
+3. Enter the number of productions
+4. Enter each production in format: A->alpha
+   - Use # for epsilon (ε)
+   - Use -> as separator
+   - Example: S->AB or A->#
+
+SYMBOLS USED:
+- # or E  : Epsilon (empty string)
+- $       : End of input
+- i       : identifier (for simple test cases)
+
+CONFLICT TYPES:
+1. FIRST-FIRST: Two productions for same NT have same terminal in FIRST
+   Example: A → aB | aC (both have 'a')
+
+2. FIRST-FOLLOW: Nullable production conflicts with FOLLOW
+   Example: A → α | ε, where FIRST(α) ∩ FOLLOW(A) ≠ ∅
+
+LL(1) CONDITIONS:
+1. No left recursion
+2. No left factoring needed
+3. For A → α | β:
+   - FIRST(α) ∩ FIRST(β) = ∅
+   - If ε ∈ FIRST(α), then FIRST(α) ∩ FOLLOW(A) = ∅
+
