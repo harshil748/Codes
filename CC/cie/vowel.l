@@ -1,18 +1,21 @@
 %{
-#include <stdio.h>
-
-static int vowel_count = 0;
+#include<stdio.h>
+int count=0;
 %}
 
-%option noyywrap
-
 %%
-[AEIOUaeiou]    { vowel_count++; }
-\n              
+[aeiouAEIOU] { count++; }
+. ;
+\n { printf("Total Vowels: %d\n",count); count=0; }
 %%
 
-int main(void) {
-    yylex();
-    printf("Total Vowels: %d\n", vowel_count);
-    return 0;
+int yywrap()
+{
+return 1;
+}
+
+int main()
+{
+yylex();
+return 0;
 }
