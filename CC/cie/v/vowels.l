@@ -8,8 +8,7 @@ static int vowel_count = 0;
 
 %%
 [AEIOUaeiou]    { vowel_count++; }
-.|
-\n              {  }
+\n              
 %%
 
 int main(void) {
