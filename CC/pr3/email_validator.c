@@ -1,58 +1,25 @@
-/*
- * Email Validation using POSIX Regular Expressions
- * Problem: Validate email addresses based on structural and syntactic rules
- * 
- * Email Structure:
- * - Local part (username): alphanumeric, dots, underscores, hyphens
- * - @ symbol (mandatory)
- * - Domain name: alphanumeric, dots, hyphens
- * - Domain extension: at least 2 characters
- */
-
 #include <stdio.h>
 #include <regex.h>
 #include <string.h>
 
-/**
- * Function: validate_email
- * Purpose: Validates email address using POSIX regex pattern matching
- * 
- * Email Pattern Breakdown:
- * ^                          - Start of string
- * [A-Za-z0-9._%+-]+          - Local part (username): one or more alphanumeric/special chars
- * @                          - Mandatory @ symbol
- * [A-Za-z0-9.-]+             - Domain name: one or more alphanumeric/dots/hyphens
- * \\.                        - Literal dot before extension
- * [A-Za-z]{2,}               - Top-level domain: at least 2 alphabetic characters
- * $                          - End of string
- */
 int validate_email(const char *email) {
     regex_t regex;
     int result;
     
-    // Regular expression pattern for email validation
     const char *pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     
-    // Compile the regular expression
     if (regcomp(&regex, pattern, REG_EXTENDED | REG_NOSUB)) {
         fprintf(stderr, "Error: Failed to compile regex pattern\n");
         return -1;
     }
     
-    // Execute the pattern matching
     result = regexec(&regex, email, 0, NULL, 0);
     
-    // Free the compiled regex memory
     regfree(&regex);
     
-    // Return 0 if valid, 1 if invalid
     return result;
 }
 
-/**
- * Function: print_validation_result
- * Purpose: Prints validation result in required format
- */
 void print_validation_result(const char *email, int is_valid) {
     printf("%-30s : ", email);
     if (is_valid == 0) {
@@ -62,16 +29,11 @@ void print_validation_result(const char *email, int is_valid) {
     }
 }
 
-/**
- * Main function: Demonstrates email validation with multiple test cases
- */
 int main() {
     char email[256];
     int choice;
     
-    printf("==========================================================\n");
-    printf("       EMAIL VALIDATION USING POSIX REGEX ENGINE\n");
-    printf("==========================================================\n\n");
+    printf("EMAIL VALIDATION USING POSIX REGEX ENGINE\n");
     
     printf("Choose mode:\n");
     printf("1. Interactive Mode (Enter email manually)\n");
@@ -80,7 +42,6 @@ int main() {
     scanf("%d", &choice);
     
     if (choice == 1) {
-        // Interactive Mode
         printf("\nEnter email address (or 'quit' to exit): ");
         while (scanf("%255s", email) == 1 && strcmp(email, "quit") != 0) {
             int result = validate_email(email);
@@ -88,10 +49,8 @@ int main() {
             printf("\nEnter email address (or 'quit' to exit): ");
         }
     } else if (choice == 2) {
-        // Test Mode - Predefined test cases
         printf("\n--- Running Test Cases ---\n\n");
         
-        // Valid test cases
         printf("VALID TEST CASES:\n");
         print_validation_result("abc@gmail.com", validate_email("abc@gmail.com"));
         print_validation_result("student123@charusat.edu", validate_email("student123@charusat.edu"));
@@ -118,9 +77,7 @@ int main() {
         return 1;
     }
     
-    printf("\n==========================================================\n");
     printf("Program terminated successfully.\n");
-    printf("==========================================================\n");
     
     return 0;
 }
