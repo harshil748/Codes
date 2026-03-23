@@ -45,7 +45,7 @@ def tokenize(text):
     return tokens
 
 
-query = "Show me the marks of 23DCE045 for the last two internal exams 😊"
+query = "Show me the marks of 23DCE081 for the last two internal exams 😊"
 
 query = normalize(query)
 
