@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -479,8 +479,8 @@ char *yytext;
 #include <stdlib.h>
 
 extern int line_num;
+#line 482 "lex.yy.c"
 #line 483 "lex.yy.c"
-#line 484 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -700,7 +700,7 @@ YY_DECL
 #line 17 "lexer.l"
 
 
-#line 704 "lex.yy.c"
+#line 703 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -917,7 +917,7 @@ YY_RULE_SETUP
 #line 65 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 921 "lex.yy.c"
+#line 920 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
