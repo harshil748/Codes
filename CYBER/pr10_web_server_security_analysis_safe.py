@@ -96,7 +96,6 @@ def init_db() -> None:
         """
     )
 
-    # Seed one lab user for login demo.
     cur.execute(
         "INSERT OR IGNORE INTO users(username, password, email) VALUES (?, ?, ?)",
         ("alice", "alice123", "alice@example.local"),

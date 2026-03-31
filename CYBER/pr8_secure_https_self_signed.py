@@ -8,9 +8,6 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 def generate_self_signed_cert(
     cert_file: str, key_file: str, common_name: str, days: int
 ) -> None:
-    """
-    Generate a self-signed certificate with OpenSSL.
-    """
     cert_dir = os.path.dirname(cert_file)
     key_dir = os.path.dirname(key_file)
     if cert_dir:
@@ -102,7 +99,7 @@ def main() -> None:
     else:
         print("[Setup] Using existing certificate and key.")
 
-    print("\n[Info] Starting HTTPS server with self-signed certificate")
+    print("\nStarting HTTPS server with self-signed certificate")
     print(f"Host: {args.host}")
     print(f"Port: {args.port}")
     print(f"Certificate: {args.cert}")
@@ -110,14 +107,10 @@ def main() -> None:
 
     print("\n[How to test]")
     print(f"1. Browser: https://{args.host}:{args.port}")
-    print("2. Browser will show a warning because certificate is self-signed.")
-    print("3. CLI test (ignore trust warning):")
+    print("3. CLI test:")
     print(f"   curl -k https://{args.host}:{args.port}")
 
-    print("\n[Security note]")
-    print("- SSL/TLS encrypts data in transit.")
-    print("- Self-signed certs are not trusted by public browsers by default.")
-    print("- Use CA-signed certificates in production.")
+
 
     try:
         server = build_https_server(args.host, args.port, args.cert, args.key)

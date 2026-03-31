@@ -18,6 +18,10 @@ HOST = "127.0.0.1"
 PORT = 9107
 
 
+def bytes_to_hex(data: bytes) -> str:
+    return data.hex()
+
+
 class KeyDistributionServer:
 
     def __init__(self) -> None:
@@ -55,6 +59,8 @@ class KeyDistributionServer:
                 session_id = f"S{self.session_counter:04d}"
 
                 aes_key = secrets.token_bytes(32)
+                print(f"[KDS] New session {session_id} for {source}<->{destination}")
+                print(f"[KDS] Generated AES-256 key (hex): {bytes_to_hex(aes_key)}")
 
                 src_pub = RSA.import_key(self.public_keys[source])
                 dst_pub = RSA.import_key(self.public_keys[destination])
@@ -64,6 +70,15 @@ class KeyDistributionServer:
 
                 enc_key_for_source = src_cipher.encrypt(aes_key)
                 enc_key_for_destination = dst_cipher.encrypt(aes_key)
+
+                print(
+                    "[KDS] Encrypted key for "
+                    f"{source} (b64): {base64.b64encode(enc_key_for_source).decode('utf-8')}"
+                )
+                print(
+                    "[KDS] Encrypted key for "
+                    f"{destination} (b64): {base64.b64encode(enc_key_for_destination).decode('utf-8')}"
+                )
 
                 package_for_source = {
                     "session_id": session_id,
@@ -224,6 +239,8 @@ def main() -> None:
     node_b_public_pem = node_b_private.publickey().export_key().decode("utf-8")
 
     print("\n[Setup] Node A and Node B generated RSA-2048 key pairs")
+    print(f"[NodeA] Public key (PEM):\n{node_a_public_pem}")
+    print(f"[NodeB] Public key (PEM):\n{node_b_public_pem}")
 
     register_node("NodeA", node_a_public_pem)
     register_node("NodeB", node_b_public_pem)
@@ -242,12 +259,20 @@ def main() -> None:
         server_thread.join(timeout=1)
         return
 
+    print("\n[Encrypted Key Packages]")
+    print(f"[NodeA] Encrypted AES key from KDS (b64): {pkg_a['encrypted_aes_key_b64']}")
+    print(f"[NodeB] Encrypted AES key from KDS (b64): {pkg_b['encrypted_aes_key_b64']}")
+
     node_a_session_key = decrypt_session_key(
         node_a_private, pkg_a["encrypted_aes_key_b64"]
     )
     node_b_session_key = decrypt_session_key(
         node_b_private, pkg_b["encrypted_aes_key_b64"]
     )
+
+    print("\n[Decrypted Session Keys at Nodes]")
+    print(f"[NodeA] Session key (hex): {bytes_to_hex(node_a_session_key)}")
+    print(f"[NodeB] Session key (hex): {bytes_to_hex(node_b_session_key)}")
 
     print("\n[Key Distribution Result]")
     print(f"Session ID: {session_id}")
