@@ -72,8 +72,5 @@ def main() -> None:
     print(f"Tampered H(M||s)        : {tampered_hash}")
     print(f"Tampering detected?     : {tampering_detected}")
 
-    
-
-
 if __name__ == "__main__":
     main()

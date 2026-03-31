@@ -19,12 +19,6 @@ PORT = 9107
 
 
 class KeyDistributionServer:
-    """
-    Key-sharing server:
-    - Maintains node public keys (RSA-2048)
-    - Generates a fresh AES-256 key for every new session request
-    - Encrypts the session key separately for each node using RSA-OAEP
-    """
 
     def __init__(self) -> None:
         self.public_keys: Dict[str, bytes] = {}
@@ -60,7 +54,6 @@ class KeyDistributionServer:
                 self.session_counter += 1
                 session_id = f"S{self.session_counter:04d}"
 
-                # Fresh AES-256 key per communication
                 aes_key = secrets.token_bytes(32)
 
                 src_pub = RSA.import_key(self.public_keys[source])
@@ -223,10 +216,8 @@ def main() -> None:
     )
     server_thread.start()
 
-    # Give server a moment to start
     time.sleep(0.5)
 
-    # Node A and Node B generate RSA-2048 key pairs
     node_a_private = RSA.generate(2048)
     node_b_private = RSA.generate(2048)
     node_a_public_pem = node_a_private.publickey().export_key().decode("utf-8")
@@ -237,10 +228,8 @@ def main() -> None:
     register_node("NodeA", node_a_public_pem)
     register_node("NodeB", node_b_public_pem)
 
-    # Node A starts a new communication session with Node B
     session_id = request_new_session("NodeA", "NodeB")
 
-    # Both nodes pull their encrypted session keys from the server
     node_a_packages = poll_encrypted_keys("NodeA")
     node_b_packages = poll_encrypted_keys("NodeB")
 
@@ -268,7 +257,6 @@ def main() -> None:
         f"Both nodes received same AES-256 key? {node_a_session_key == node_b_session_key}"
     )
 
-    # Practical communication using the distributed AES-256 key
     message = "Hello NodeB, this message uses AES-256 key received from KDS."
     nonce_b64, ciphertext_b64, tag_b64 = aes_encrypt_message(
         node_a_session_key, message
@@ -285,8 +273,6 @@ def main() -> None:
 
     stop_event.set()
     server_thread.join(timeout=1)
-
-
 
 if __name__ == "__main__":
     main()
