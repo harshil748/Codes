@@ -4,11 +4,9 @@ import json
 from dataclasses import dataclass
 
 try:
-    # pycryptodomex package name
     from Cryptodome.Cipher import AES
     from Cryptodome.Random import get_random_bytes
 except ImportError:
-    # pycryptodome package name
     from Crypto.Cipher import AES
     from Crypto.Random import get_random_bytes
 
@@ -21,17 +19,10 @@ class EncryptedPacket:
 
 
 def sha256_hex(message: str) -> str:
-    """Return SHA256 hash in hexadecimal format."""
     return hashlib.sha256(message.encode("utf-8")).hexdigest()
 
 
 def encrypt_bundle(secret_key: bytes, message: str) -> EncryptedPacket:
-    """
-    Bob side:
-    - Compute H(M)
-    - Build bundle {message, hash}
-    - Encrypt bundle with AES-GCM using a single shared key
-    """
     message_hash = sha256_hex(message)
 
     bundle = {
@@ -51,11 +42,6 @@ def encrypt_bundle(secret_key: bytes, message: str) -> EncryptedPacket:
 
 
 def decrypt_bundle(secret_key: bytes, packet: EncryptedPacket) -> dict:
-    """
-    Alice side:
-    - Decrypt encrypted bundle with same secret key
-    - Verify GCM authentication tag during decryption
-    """
     nonce = base64.b64decode(packet.nonce_b64)
     ciphertext = base64.b64decode(packet.ciphertext_b64)
     tag = base64.b64decode(packet.tag_b64)
@@ -67,25 +53,18 @@ def decrypt_bundle(secret_key: bytes, packet: EncryptedPacket) -> dict:
 
 
 def verify_integrity(received_message: str, received_hash: str) -> bool:
-    """Alice recomputes SHA256(message) and compares with received hash."""
     computed_hash = sha256_hex(received_message)
     return computed_hash == received_hash
 
 
 def main() -> None:
     print("ENCRYPTION + SHA256 INTEGRITY VERIFICATION")
-    
-
-    # One symmetric secret key known to Bob and Alice.
-    # AES-256 key size is 32 bytes.
     secret_key = get_random_bytes(32)
 
     message = "Bank transfer approved: INR 25,000 to account X123."
 
     print("\n[Bob] Original Message (M):")
     print(message)
-
-    # Bob computes H(M), appends it with M, then encrypts the complete bundle.
     packet = encrypt_bundle(secret_key, message)
 
     print("\n[Bob] Encrypted bundle sent to Alice:")
@@ -93,7 +72,6 @@ def main() -> None:
     print(f"ciphertext  : {packet.ciphertext_b64}")
     print(f"auth tag    : {packet.tag_b64}")
 
-    # Alice decrypts using the same key.
     decrypted_data = decrypt_bundle(secret_key, packet)
     received_message = decrypted_data["message"]
     received_hash = decrypted_data["hash"]
@@ -102,7 +80,6 @@ def main() -> None:
     print(f"Received Message M : {received_message}")
     print(f"Received Hash H(M) : {received_hash}")
 
-    # Alice computes SHA256 on received message and compares.
     is_valid = verify_integrity(received_message, received_hash)
     computed_hash = sha256_hex(received_message)
 
@@ -113,7 +90,6 @@ def main() -> None:
         f"Integrity Check    : {'PASS (Message not altered)' if is_valid else 'FAIL (Message altered)'}"
     )
 
-    # Optional tampering demonstration after decryption.
     tampered_message = received_message.replace("25,000", "95,000")
     tampered_valid = verify_integrity(tampered_message, received_hash)
 
