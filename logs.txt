@@ -174,3 +174,10 @@ module.exports = {
 	//   }
 	// }
 };
+
+
+& 'C:\Users\Grass\AppData\Local\Microsoft\WinGet\Packages\WinFlexBison.win_flex_bison_Microsoft.Winget.Source_8wekyb3d8bbwe\win_bison.exe' -d -o parser.tab.c parser.y
+
+& 'C:\Users\Grass\AppData\Local\Microsoft\WinGet\Packages\WinFlexBison.win_flex_bison_Microsoft.Winget.Source_8wekyb3d8bbwe\win_flex.exe' -o lexer.yy.c lexer.l
+
+gcc parser.tab.c lexer.yy.c -o checker.exe

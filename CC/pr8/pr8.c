@@ -173,9 +173,7 @@ void printTriple(void)
 
 int main(void)
 {
-    /* Tokenized expression:
-       ((quiz1 + quiz2)/2 * 0.2) + ((assignment1 + assignment2 * 2)/3 * 0.4)
-    */
+    
     char exp[][20] = {
         "(", "(", "quiz1", "+", "quiz2", ")", "/", "2", "*", "0.2", ")", "+",
         "(", "(", "assignment1", "+", "assignment2", "*", "2", ")", "/", "3", "*", "0.4", ")"};

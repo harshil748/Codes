@@ -74,3 +74,5 @@ a.out
 images/
 .DS_Store
 *data
+*lex/
+*.txt
