@@ -65,14 +65,10 @@ __pycache__/
 *.class
 
 # Executables
-*.exe
+
 a.out
 
 # Build artifacts
 *.rlib
 *.rmeta
-images/
 .DS_Store
-*data
-*lex/
-*.txt
